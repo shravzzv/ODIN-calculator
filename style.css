@@ -1,0 +1,63 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+}
+
+.calculator {
+  border: 2px solid purple;
+  padding: 1em;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.display {
+  border: 1px solid gray;
+  background-color: lightgray;
+  border-radius: 10px;
+  font-size: 2rem;
+  padding: 0.5em;
+  min-height: 75px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.operator {
+  border-radius: 50%;
+  background-color: orange;
+  border: none;
+  padding: 0;
+  width: 35px;
+  height: 35px;
+  font-size: 1.2rem;
+}
+
+.button__equals {
+  background-color: black;
+  color: white;
+}
