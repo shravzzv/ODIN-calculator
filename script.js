@@ -1,21 +1,9 @@
-/* Understand the problem:
-    Write an operate function which has access to user input variable which is a string containing operands and operators such as "1+1" or "2*4+5".The function needs to compute the result of the all operations one at a time starting from the left and update the displayElement.innerText with the result.
-
-    Plan:
-      Input: none
-      Ouput: none
-
-    Pseudocode:
-      split the user input into an array of operands
-      make an array of operators from the user input
-      loop through the operands performing an operation using the operators
-  */
-
 const numbersNodeList = document.querySelectorAll('.number')
 const operatorsNodeList = document.querySelectorAll('.operator')
 const displayElement = document.querySelector('.display')
 const clearButtonElement = document.querySelector('.button__clear')
 const equalsButtonElement = document.querySelector('.button__equals')
+const deleteButtonElement = document.querySelector('.button__delete')
 
 displayElement.innerText = null
 
@@ -45,12 +33,16 @@ const compute = (num1, num2, operator) => {
 
 // eventHandlers
 
-function populateDisplay(e) {
+const populateDisplay = (e) => {
   displayElement.innerText += e.target.innerText
 }
 
 const clearDisplay = () => {
   displayElement.textContent = null
+}
+
+const deleteCharacter = () => {
+  displayElement.innerText = displayElement.innerText.slice(0, -1)
 }
 
 const operate = () => {
@@ -68,25 +60,6 @@ const operate = () => {
     const result = compute(computed[0], computed[1], operators[i])
     computed.splice(0, 2, result)
     i++
-    /* 
-    start of loop:
-    i = 0
-    operators = ["+", "+"]
-    operands = ["1", "2", "3"]
-    computed = [1, 2, 3] 
-
-    result = 1 + 2 = 3
-    can use splice: computed.splice(0, 2, result)
-    // next
-    computed = [3, 3]
-    result = 3 + 3 = 6
-
-    computed.splice(0, 2, result); will be []
-    but i = 1
-    // end of loop
-    computed = [6]
-    result = 6
-    */
   }
 
   displayElement.innerText = computed[0]
@@ -104,3 +77,5 @@ operatorsNodeList.forEach((operator) =>
 clearButtonElement.addEventListener('click', clearDisplay)
 
 equalsButtonElement.addEventListener('click', operate)
+
+deleteButtonElement.addEventListener('click', deleteCharacter)
