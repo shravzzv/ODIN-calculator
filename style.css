@@ -69,6 +69,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  max-width: 150px;
 }
 
 .number {
@@ -77,15 +78,31 @@ button {
 
 .button__equals {
   margin: 0.15em;
+  font-size: 1.2rem;
 }
 
 .buttons__operators {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .operator {
   background-color: #ff9500;
   font-size: 1.2rem;
   margin: 0.15em;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1b1b1b;
+  }
+
+  .calculator {
+    background-color: #eee7e7;
+  }
+
+  button {
+    background-color: #1b1b1b;
+    color: white;
+  }
 }
