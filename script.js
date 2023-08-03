@@ -51,7 +51,6 @@ const operate = () => {
   const operators = userInput
     .split('')
     .filter((el) => el === '+' || el === '-' || el === '*' || el === '/')
-  console.log(userInput, operands, operators)
 
   let i = 0
   let computed = [...operands]
@@ -76,6 +75,6 @@ operatorsNodeList.forEach((operator) =>
 
 clearButtonElement.addEventListener('click', clearDisplay)
 
-equalsButtonElement.addEventListener('click', operate)
-
 deleteButtonElement.addEventListener('click', deleteCharacter)
+
+equalsButtonElement.addEventListener('click', operate)
