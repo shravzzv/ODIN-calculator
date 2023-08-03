@@ -54,3 +54,12 @@ operatorsNodeList.forEach((operator) =>
 clearButtonElement.addEventListener('click', clearDisplay)
 
 equalsButtonElement.addEventListener('click', operate)
+
+// todo: Users should be able to string together several operations and get the right answer, with each pair of numbers being evaluated at a time.
+// * For example, 12 + 7 - 5 * 3 = should yield 42. It should go like 12 + 7 - 5 * 3 = 42 => 19 - 5 * 3 = 42 => 14 * 3 = 42.
+
+// todo: You should round answers with long decimals so that they don’t overflow the screen.
+
+// todo: Pressing “clear” should wipe out any existing data.. make sure the user is really starting fresh after pressing “clear”
+
+// todo:  Display a snarky error message if the user tries to divide by 0… and don’t let it crash your calculator!
