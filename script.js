@@ -3,6 +3,7 @@ const operatorsNodeList = document.querySelectorAll('.operator')
 const displayElement = document.querySelector('.display')
 const clearButtonElement = document.querySelector('.button__clear')
 const equalsButtonElement = document.querySelector('.button__equals')
+const deleteButtonElement = document.querySelector('.button__delete')
 
 displayElement.innerText = null
 
@@ -11,9 +12,28 @@ const subtract = (a, b) => a - b
 const multiply = (a, b) => a * b
 const divide = (a, b) => a / b
 
+const compute = (num1, num2, operator) => {
+  switch (operator) {
+    case '+':
+      return add(+num1, +num2)
+
+    case '-':
+      return subtract(num1, num2)
+
+    case '*':
+      return multiply(num1, num2)
+
+    case '/':
+      return num2 == 0 ? 'cannot divide by zero' : divide(num1, num2)
+
+    default:
+      return 'invalid operator'
+  }
+}
+
 // eventHandlers
 
-function populateDisplay(e) {
+const populateDisplay = (e) => {
   displayElement.innerText += e.target.innerText
 }
 
@@ -21,25 +41,27 @@ const clearDisplay = () => {
   displayElement.textContent = null
 }
 
+const deleteCharacter = () => {
+  displayElement.innerText = displayElement.innerText.slice(0, -1)
+}
+
 const operate = () => {
-  let operand1, operator, operand2
   const userInput = displayElement.innerText
-  const operatorIndex = userInput.search(/[+\-*\/]/gi)
+  const operands = userInput.split(/[+\-*\/]/)
+  const operators = userInput
+    .split('')
+    .filter((el) => el === '+' || el === '-' || el === '*' || el === '/')
 
-  operand1 = parseInt(userInput.slice(0, operatorIndex))
-  operand2 = parseInt(userInput.slice(operatorIndex + 1))
-  operator = userInput.slice(operatorIndex, operatorIndex + 1)
+  let i = 0
+  let computed = [...operands]
 
-  displayElement.innerText =
-    operator === '+'
-      ? add(operand1, operand2)
-      : operator === '-'
-      ? subtract(operand1, operand2)
-      : operator === '*'
-      ? multiply(operand1, operand2)
-      : operator === '/'
-      ? divide(operand1, operand2)
-      : 'invalid operator'
+  while (i < operators.length) {
+    const result = compute(computed[0], computed[1], operators[i])
+    computed.splice(0, 2, result)
+    i++
+  }
+
+  displayElement.innerText = computed[0]
 }
 
 // eventListeners
@@ -53,13 +75,6 @@ operatorsNodeList.forEach((operator) =>
 
 clearButtonElement.addEventListener('click', clearDisplay)
 
+deleteButtonElement.addEventListener('click', deleteCharacter)
+
 equalsButtonElement.addEventListener('click', operate)
-
-// todo: Users should be able to string together several operations and get the right answer, with each pair of numbers being evaluated at a time.
-// * For example, 12 + 7 - 5 * 3 = should yield 42. It should go like 12 + 7 - 5 * 3 = 42 => 19 - 5 * 3 = 42 => 14 * 3 = 42.
-
-// todo: You should round answers with long decimals so that they don’t overflow the screen.
-
-// todo: Pressing “clear” should wipe out any existing data.. make sure the user is really starting fresh after pressing “clear”
-
-// todo:  Display a snarky error message if the user tries to divide by 0… and don’t let it crash your calculator!
