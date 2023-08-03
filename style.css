@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
 html {
   box-sizing: border-box;
 }
@@ -13,51 +15,77 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  min-height: 100vh;
+  padding: 0 1.5em;
+  font-family: 'Orbitron', sans-serif;
 }
 
 button {
   cursor: pointer;
-  padding: 0.5em 1em;
-  border-radius: 5px;
+  border-radius: 1em;
+  height: 45px;
+  width: 45px;
+  border: none;
+  border-radius: 50%;
 }
 
 .calculator {
-  border: 2px solid purple;
-  padding: 1em;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
+  background-color: #1c1c1c;
+  padding: 1.5em;
+  border-radius: 1em;
+  max-width: 450px;
 }
 
 .display {
-  border: 1px solid gray;
-  background-color: lightgray;
-  border-radius: 10px;
+  background-color: #505050;
+  border-radius: 0.5em;
   font-size: 2rem;
   padding: 0.5em;
-  min-height: 75px;
+  min-height: 80px;
+  margin-bottom: 0.75em;
+  color: #fff;
 }
 
-.buttons {
+.buttons__utility {
   display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+  margin-bottom: 1.5em;
 }
 
-.operator {
-  border-radius: 50%;
-  background-color: orange;
-  border: none;
-  padding: 0;
-  width: 35px;
-  height: 35px;
-  font-size: 1.2rem;
+.buttons__utility button {
+  width: 60px;
+  border-radius: 1.5em;
+  margin: 0.15em;
+}
+
+.buttons__math {
+  display: flex;
+}
+
+.buttons__math button {
+  aspect-ratio: 1;
+}
+
+.buttons__numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.number {
+  margin: 0.15em;
 }
 
 .button__equals {
-  background-color: black;
-  color: white;
+  margin: 0.15em;
+}
+
+.buttons__operators {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.operator {
+  background-color: #ff9500;
+  font-size: 1.2rem;
+  margin: 0.15em;
 }
