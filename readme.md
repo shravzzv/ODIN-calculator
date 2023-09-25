@@ -1,7 +1,5 @@
 # Calculator
 
-⚠️ This project has some design and functional issues which will be fixed soon.
-
 The Vanilla JS Calculator is a simple calculator web application built using vanilla JavaScript, HTML, and CSS. It allows users to perform basic arithmetic calculations in a user-friendly interface.
 
 ![calculator](https://cdn.jim-nielsen.com/ios/512/calculator-2017-10-10.png)
@@ -13,6 +11,7 @@ This is the final [project](https://www.theodinproject.com/lessons/foundations-c
 - Addition, subtraction, multiplication, and division operations.
 - Clear button to reset the calculator.
 - Responsive design for use on various devices.
+- Keypad events.
 
 ## How to Use
 
