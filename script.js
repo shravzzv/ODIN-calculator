@@ -31,10 +31,23 @@ const compute = (num1, num2, operator) => {
   }
 }
 
+// Function to update the font size based on the number of digits
+function updateFontSize() {
+  const numDigits = displayElement.innerText.length
+  const maxDigits = 6 // Maximum digits before font size adjustment
+
+  // Calculate the font size based on the number of digits
+  const fontSize = numDigits <= maxDigits ? '2rem' : `${12 / numDigits}rem`
+
+  // Apply the new font size to the display
+  displayElement.style.fontSize = fontSize
+}
+
 // eventHandlers
 
 const populateDisplay = (e) => {
   displayElement.innerText += e.target.innerText
+  updateFontSize()
 }
 
 const clearDisplay = () => {
@@ -43,6 +56,7 @@ const clearDisplay = () => {
 
 const deleteCharacter = () => {
   displayElement.innerText = displayElement.innerText.slice(0, -1)
+  updateFontSize()
 }
 
 const operate = () => {
@@ -62,6 +76,7 @@ const operate = () => {
   }
 
   displayElement.innerText = computed[0]
+  updateFontSize()
 }
 
 // eventListeners
