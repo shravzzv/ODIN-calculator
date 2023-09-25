@@ -33,16 +33,22 @@ button {
   background-color: #1c1c1c;
   padding: 1.5em;
   border-radius: 1em;
-  max-width: 450px;
+  max-width: 70vw;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .display {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
   background-color: #505050;
   border-radius: 0.5em;
-  font-size: 2rem;
-  padding: 0.5em;
+  padding: 0 0.5em;
   min-height: 80px;
   margin-bottom: 0.75em;
+  width: 100%;
   color: #fff;
 }
 
@@ -98,11 +104,17 @@ button {
   }
 
   .calculator {
-    background-color: #eee7e7;
+    background-color: black;
   }
 
   button {
     background-color: #1b1b1b;
     color: white;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .display {
+    max-width: 25vw;
   }
 }
