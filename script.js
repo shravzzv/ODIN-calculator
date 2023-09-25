@@ -46,7 +46,11 @@ function updateFontSize() {
 // eventHandlers
 
 const populateDisplay = (e) => {
-  displayElement.innerText += e.target.innerText
+  if (typeof e === 'object') {
+    displayElement.innerText += e.target.innerText
+  } else {
+    displayElement.innerText += e
+  }
   updateFontSize()
 }
 
@@ -79,6 +83,41 @@ const operate = () => {
   updateFontSize()
 }
 
+const handleKeyPress = (e) => {
+  const dataKeys = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '0',
+    '+',
+    '-',
+    '*',
+    '/',
+  ]
+
+  if (dataKeys.includes(e.key)) {
+    populateDisplay(dataKeys.find((key) => key === e.key))
+  }
+
+  if (e.key === 'Enter') {
+    operate()
+  }
+
+  if (e.key === 'c' || e.key === 'C' || e.key === 'Escape') {
+    clearDisplay()
+  }
+
+  if (e.key === 'Backspace') {
+    deleteCharacter()
+  }
+}
+
 // eventListeners
 
 numbersNodeList.forEach((number) =>
@@ -93,3 +132,5 @@ clearButtonElement.addEventListener('click', clearDisplay)
 deleteButtonElement.addEventListener('click', deleteCharacter)
 
 equalsButtonElement.addEventListener('click', operate)
+
+document.addEventListener('keydown', handleKeyPress)
