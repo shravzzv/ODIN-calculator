@@ -99,6 +99,7 @@ const handleKeyPress = (e) => {
     '-',
     '*',
     '/',
+    '.',
   ]
 
   if (dataKeys.includes(e.key)) {
@@ -113,7 +114,7 @@ const handleKeyPress = (e) => {
     clearDisplay()
   }
 
-  if (e.key === 'Backspace') {
+  if (e.key === 'Backspace' || e.key === 'Delete') {
     deleteCharacter()
   }
 }
