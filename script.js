@@ -31,15 +31,21 @@ const compute = (num1, num2, operator) => {
   }
 }
 
-// Function to update the font size based on the number of digits
 function updateFontSize() {
-  const numDigits = displayElement.innerText.length
-  const maxDigits = 6 // Maximum digits before font size adjustment
+  const text = displayElement.innerText
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d')
+  context.font =
+    getComputedStyle(displayElement).fontSize +
+    ' ' +
+    getComputedStyle(displayElement).fontFamily
+  const textWidth = context.measureText(text).width
 
-  // Calculate the font size based on the number of digits
-  const fontSize = numDigits <= maxDigits ? '2rem' : `${12 / numDigits}rem`
+  const maxTextWidth =
+    5.5 * parseFloat(getComputedStyle(displayElement).fontSize) // Maximum width for 6 characters
+  const fontSize =
+    textWidth <= maxTextWidth ? '2rem' : `${(2 * maxTextWidth) / textWidth}rem`
 
-  // Apply the new font size to the display
   displayElement.style.fontSize = fontSize
 }
 
@@ -54,9 +60,7 @@ const populateDisplay = (e) => {
   updateFontSize()
 }
 
-const clearDisplay = () => {
-  displayElement.textContent = null
-}
+const clearDisplay = () => (displayElement.textContent = null)
 
 const deleteCharacter = () => {
   displayElement.innerText = displayElement.innerText.slice(0, -1)
